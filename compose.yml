@@ -1,0 +1,6 @@
+services:
+  fastapi-socialmedia:
+    build:
+      context: .
+    ports:
+      - 8000:8000
