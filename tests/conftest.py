@@ -2,7 +2,7 @@ from typing import AsyncGenerator, Generator
 
 import pytest
 from fastapi.testclient import TestClient
-from httpx import AsyncClient
+from httpx import AsyncClient, ASGITransport
 
 from app.main import app
 from app.routers.post import comment_table, post_table
@@ -18,14 +18,17 @@ def anyio_backend():
 
 @pytest.fixture()
 def client() -> Generator:
+    ## Method equivalent to the one returning the function directly
+    # with TestClient(app, base_url="http://testserver/api") as c:
+    #     yield c
     yield TestClient(
-        app
+        app, base_url="http://testserver/api/"
     )  # "yield" because some teardown code must be executed after using the client for returning it to its original state. Teardown code: Same as cleanup code. Used to revert any changes made during the setup or the test itself, ensuring that subsequent tests start in a clean and predictable state.
 
 
 @pytest.fixture(
     autouse=True
-)  # Autouse for appliying the fixture to all the tests defined in the context (test module or conftest), so there is no need to pass it as an argument to the tests
+)  # Autouse for running the fixture BEFORE EVERY test defined in the context (test module or conftest), so there is no need to pass it as an argument to the tests. So in this case, the post and comment tables are cleaned up before every test begins.
 async def db() -> AsyncGenerator:
     post_table.clear()  # Thanks to the "autouse", the database is cleaned up before any test begin
     comment_table.clear()
@@ -34,5 +37,10 @@ async def db() -> AsyncGenerator:
 
 @pytest.fixture()
 async def async_client(client) -> AsyncGenerator:
-    async with AsyncClient(app=app, base_url=client.base_url) as ac:
+    async with (
+        AsyncClient(
+            transport=ASGITransport(app=app),
+            base_url=client.base_url,  # "ASGITransport" is a httpx plugin to run httpx clients asyncronously --> https://fastapi.tiangolo.com/advanced/async-tests/
+        ) as ac
+    ):
         yield ac
