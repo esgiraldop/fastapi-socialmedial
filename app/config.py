@@ -1,9 +1,9 @@
-from pydantic import BasicSettings
+from pydantic_settings import BaseSettings
 from typing import Optional
 from functools import lru_cache
 
 
-class BaseConfig(BasicSettings):
+class BaseConfig(BaseSettings):
     ENV_STATE: Optional[str] = (
         None  # Variable To let our applicaiton know if it is on development, production or testing
     )
@@ -11,6 +11,7 @@ class BaseConfig(BasicSettings):
     class Config:
         # Class that tells pydantic to load a file to populate configuration variables via environment variables
         env_file: str = ".env"
+        extra = "ignore"
 
 
 class GlobalConfig(BaseConfig):
@@ -28,19 +29,19 @@ class DevConfig(GlobalConfig):
 
 class TestConfig(GlobalConfig):
     # The environment variables harcoded here are the default the ones. These are overwritten with the ones in the .env file
-    TEST_DATABASE_URL = "sqlite:///test.db"
+    TEST_DATABASE_URL: str = "sqlite:///test.db"
     DB_FORCE_ROLL_BACK: bool = True
 
     class Config:
         env_prefix: str = (
-            "PROD_"  # To prefix all env virables from the .env file with "DEV_"
+            "TEST_"  # To prefix all env virables from the .env file with "DEV_"
         )
 
 
 class ProdConfig(GlobalConfig):
     class Config:
         env_prefix: str = (
-            "TEST_"  # To prefix all env virables from the .env file with "DEV_"
+            "PROD_"  # To prefix all env virables from the .env file with "DEV_"
         )
 
 

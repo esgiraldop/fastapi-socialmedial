@@ -1,8 +1,16 @@
+import os
 from typing import AsyncGenerator, Generator
 
 import pytest
 from fastapi.testclient import TestClient
-from httpx import AsyncClient, ASGITransport
+from httpx import ASGITransport, AsyncClient
+
+"""
+Overwritting the environment variable to load the test config, in which the database roll backs the transactions once the test is finished. This is done with variable "DB_FORCE_ROLL_BACK = true"
+
+The env variable must be overwritten before loading the app, which imports the database and then the config. 
+"""
+os.environ["ENV_STATE"] = "test"  # noqa: E402
 
 from app.main import app
 from app.routers.post import comment_table, post_table

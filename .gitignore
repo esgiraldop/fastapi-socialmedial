@@ -28,3 +28,6 @@
 
 # macOS
 *.DS_Store
+
+#sqlite files
+*.db

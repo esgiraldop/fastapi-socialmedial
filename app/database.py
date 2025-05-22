@@ -2,25 +2,26 @@
 
 import databases
 import sqlalchemy
-from config import config
+from app.config import config
+from sqlalchemy import Column, Integer, String, ForeignKey, Table
 
 metadata = sqlalchemy.MetaData()  # Stores info about database
 
 ### Defining the database schema ###
-post_table = sqlalchemy.Table(
+post_table = Table(
     "posts",
     metadata,  # Used by sqlAlchemy to store database metadata
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    sqlalchemy.Column("body", sqlalchemy.String),
+    Column("id", Integer, primary_key=True),
+    Column("body", String),
 )
-comments_table = sqlalchemy.Table(
+comments_table = Table(
     "comments",
     metadata,
-    sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
-    sqlalchemy.Column("body", sqlalchemy.String),
-    sqlalchemy.Column(
-        "post_id", sqlalchemy.ForeignKey("posts.id", nullable=False)
-    ),  # No need to specify integer, since metadata already figures that out from the primary key column
+    Column("id", Integer, primary_key=True),
+    Column("body", String),
+    Column(
+        "post_id", Integer, ForeignKey("posts.id"), nullable=False
+    ),  # Specifying integer for consistency purposes, but here is actually no need to specify it, since metadata already figures that out from the primary key column
 )
 
 
