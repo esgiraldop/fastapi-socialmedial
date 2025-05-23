@@ -32,7 +32,7 @@ async def test_create_post(async_client: AsyncClient):
 
     assert response.status_code == 201
     assert (
-        {"id": 0, "body": body}.items() <= response.json().items()
+        {"id": 1, "body": body}.items() <= response.json().items()
     )  # "<=" for assessing the expression at the left is included in the one at the right
 
 
@@ -60,7 +60,7 @@ async def test_get_posts(async_client: AsyncClient, created_post: dict):
 @pytest.mark.anyio
 async def test_create_comment(async_client: AsyncClient, created_post):
     body = "Test comment"
-    response = await async_client.post("/comment", json={"body": body, "post_id": 0})
+    response = await async_client.post("/comment", json={"body": body, "post_id": 1})
 
     assert response.status_code == 201
 
@@ -80,7 +80,7 @@ async def test_create_comment_no_post(async_client: AsyncClient):
 
 @pytest.mark.anyio
 async def test_get_comments(async_client: AsyncClient, created_comment):
-    response = await async_client.get("/post/0/comments")
+    response = await async_client.get("/post/1/comments")
     assert response.status_code == 200
     assert created_comment in response.json()
 

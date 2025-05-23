@@ -12,8 +12,8 @@ The env variable must be overwritten before loading the app, which imports the d
 """
 os.environ["ENV_STATE"] = "test"  # noqa: E402
 
-from app.main import app
-from app.routers.post import comment_table, post_table
+from app.main import app  # noqa: E402
+from app.database import database  # noqa: E402
 
 
 @pytest.fixture(
@@ -38,9 +38,11 @@ def client() -> Generator:
     autouse=True
 )  # Autouse for running the fixture BEFORE EVERY test defined in the context (test module or conftest), so there is no need to pass it as an argument to the tests. So in this case, the post and comment tables are cleaned up before every test begins.
 async def db() -> AsyncGenerator:
-    post_table.clear()  # Thanks to the "autouse", the database is cleaned up before any test begin
-    comment_table.clear()
+    await (
+        database.connect()
+    )  # Thanks to the "autouse", the database is connected before any test begin
     yield
+    await database.disconnect()  # Teardown
 
 
 @pytest.fixture()
