@@ -21,7 +21,7 @@ async def created_post(async_client: AsyncClient):
 
 @pytest.fixture()
 async def created_comment(async_client: AsyncClient, created_post):
-    return await create_comment("Test comment", 0, async_client=async_client)
+    return await create_comment("Test comment", 1, async_client=async_client)
 
 
 @pytest.mark.anyio  # Telling pytest this test should use the async backend configured in the conftest
