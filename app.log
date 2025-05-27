@@ -1,0 +1,138 @@
+2025-05-26T23:13-55.379Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:14-08.518Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:14-08.619Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:14-08.620Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:14-08.620Z | INFO     | uvicorn.error:93 - Finished server process [15593]
+2025-05-26T23:14-08.927Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:14-08.929Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:18-06.152Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:18-06.253Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:18-06.254Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:18-06.254Z | INFO     | uvicorn.error:93 - Finished server process [15683]
+2025-05-26T23:18-06.544Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:18-06.546Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:19-27.977Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:19-28.078Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:19-28.078Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:19-28.078Z | INFO     | uvicorn.error:93 - Finished server process [16776]
+2025-05-26T23:19-28.392Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:19-28.393Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:19-44.676Z | DEBUG    | app.routers.post:43 - SELECT posts.id, posts.body 
+FROM posts
+2025-05-26T23:19-44.679Z | INFO     | uvicorn.access:476 - 127.0.0.1:50001 - "GET /api/post HTTP/1.1" 200
+2025-05-26T23:21-49.927Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:21-50.029Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:21-50.029Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:21-50.029Z | INFO     | uvicorn.error:93 - Finished server process [17196]
+2025-05-26T23:21-50.332Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:21-50.334Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:21-55.654Z | INFO     | app.routers.post:41 - Getting all posts
+2025-05-26T23:21-55.655Z | DEBUG    | app.routers.post:44 - SELECT posts.id, posts.body 
+FROM posts
+2025-05-26T23:21-55.657Z | INFO     | uvicorn.access:476 - 127.0.0.1:50011 - "GET /api/post HTTP/1.1" 200
+2025-05-26T23:23-19.248Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:23-19.350Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:23-19.352Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:23-19.353Z | INFO     | uvicorn.error:93 - Finished server process [17983]
+2025-05-26T23:23-19.669Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:23-19.673Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:24-16.503Z | INFO     | app.routers.post:20 - Finding posts with id 1
+2025-05-26T23:24-16.506Z | INFO     | uvicorn.access:476 - 127.0.0.1:50034 - "GET /api/post/1 HTTP/1.1" 404
+2025-05-26T23:24-20.893Z | INFO     | app.routers.post:20 - Finding posts with id 0
+2025-05-26T23:24-20.895Z | INFO     | uvicorn.access:476 - 127.0.0.1:50036 - "GET /api/post/0 HTTP/1.1" 404
+2025-05-26T23:25-18.594Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:25-18.696Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:25-18.696Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:25-18.696Z | INFO     | uvicorn.error:93 - Finished server process [18522]
+2025-05-26T23:25-19.004Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:25-19.006Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:27-17.295Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:27-17.397Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:27-17.397Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:27-17.397Z | INFO     | uvicorn.error:93 - Finished server process [19321]
+2025-05-26T23:27-17.698Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:27-17.700Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:28-24.798Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:28-24.899Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:28-24.901Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:28-24.901Z | INFO     | uvicorn.error:93 - Finished server process [19884]
+2025-05-26T23:28-25.212Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:28-25.213Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:28-33.192Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:28-33.294Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:28-33.295Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:28-33.295Z | INFO     | uvicorn.error:93 - Finished server process [20203]
+2025-05-26T23:28-39.721Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:28-39.723Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:29-17.910Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:29-18.011Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:29-18.012Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:29-18.012Z | INFO     | uvicorn.error:93 - Finished server process [20327]
+2025-05-26T23:29-18.321Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:29-18.323Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:29-37.219Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:29-37.321Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:29-37.322Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:29-37.322Z | INFO     | uvicorn.error:93 - Finished server process [20522]
+2025-05-26T23:29-37.630Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:29-37.632Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:29-55.103Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:29-55.204Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:29-55.205Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:29-55.205Z | INFO     | uvicorn.error:93 - Finished server process [20648]
+2025-05-26T23:29-55.533Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:29-55.534Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:30-17.166Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:30-17.267Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:30-17.267Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:30-17.267Z | INFO     | uvicorn.error:93 - Finished server process [20737]
+2025-05-26T23:30-17.574Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:30-17.576Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:48-32.678Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:48-32.779Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:48-32.779Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:48-32.780Z | INFO     | uvicorn.error:93 - Finished server process [20873]
+2025-05-26T23:50-01.322Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:50-01.323Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:50-38.308Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:50-38.410Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:50-38.410Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:50-38.410Z | INFO     | uvicorn.error:93 - Finished server process [26392]
+2025-05-26T23:50-38.726Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:50-38.728Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:50-58.430Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:50-58.531Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:50-58.532Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:50-58.532Z | INFO     | uvicorn.error:93 - Finished server process [26584]
+2025-05-26T23:50-58.845Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:50-58.847Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:51-11.774Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:51-11.876Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:51-11.876Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:51-11.877Z | INFO     | uvicorn.error:93 - Finished server process [26704]
+2025-05-26T23:51-12.229Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:51-12.231Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:51-41.313Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:51-41.415Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:51-41.415Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:51-41.415Z | INFO     | uvicorn.error:93 - Finished server process [26791]
+2025-05-26T23:51-41.727Z | INFO     | app.main:16 - Hello world
+2025-05-26T23:51-41.730Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:52-10.814Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:52-10.916Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:52-10.917Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:52-10.917Z | INFO     | uvicorn.error:93 - Finished server process [26971]
+2025-05-26T23:52-11.225Z | INFO     | app.main:17 - Hello world
+2025-05-26T23:52-11.227Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:52-49.431Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:52-49.533Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:52-49.533Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:52-49.533Z | INFO     | uvicorn.error:93 - Finished server process [27122]
+2025-05-26T23:52-49.822Z | INFO     | app.main:17 - Hello world
+2025-05-26T23:52-49.824Z | INFO     | uvicorn.error:62 - Application startup complete.
+2025-05-26T23:54-16.110Z | INFO     | uvicorn.error:263 - Shutting down
+2025-05-26T23:54-16.211Z | INFO     | uvicorn.error:67 - Waiting for application shutdown.
+2025-05-26T23:54-16.211Z | INFO     | uvicorn.error:76 - Application shutdown complete.
+2025-05-26T23:54-16.212Z | INFO     | uvicorn.error:93 - Finished server process [27330]
+2025-05-26T23:54-16.525Z | INFO     | app.main:17 - Hello world
+2025-05-26T23:54-16.527Z | INFO     | uvicorn.error:62 - Application startup complete.
