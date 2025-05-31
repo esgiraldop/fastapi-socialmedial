@@ -29,5 +29,8 @@
 # macOS
 *.DS_Store
 
-#sqlite files
+# sqlite files
 *.db
+
+# loggers
+app.log

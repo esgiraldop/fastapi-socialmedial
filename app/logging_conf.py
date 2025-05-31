@@ -8,16 +8,27 @@ def configure_logging() -> None:
         {
             "version": 1,
             "disable_existing_loggers": False,
+            "filters": {
+                "correlation_id": {  # Adds another variable to the formaters, so the id of the user making the request is printed at the beggining of the log
+                    "()": "asgi_correlation_id.CorrelationIdFilter",
+                    # Any parameter passed after "()", will be passed as keyword arguments to "asgi_correlation_id.CorrelationIdFilter"
+                    "uuid_length": 8 if isinstance(config, DevConfig) else 32,
+                    "default_value": "-",
+                    # The three keywords above are equivalent to do "asgi_correlation_id.CorrelationIdFilter(uuid_length=8, default_value="-")"
+                },
+            },
             "formatters": {
                 "console": {
                     "class": "logging.Formatter",
                     "datefmt": "%Y-%m-%dT%H:%M-%S",
-                    "format": "%(name)s:%(lineno)d - %(message)s",
+                    "format": "(%(correlation_id)s) %(name)s:%(lineno)d - %(message)s",
+                    # "format": "%(name)s:%(lineno)d - %(message)s",
                 },  # Format of the log records to be displayed to the console
                 "file": {
-                    "class": "logging.Formatter",
+                    # "class": "logging.Formatter",  # For logging plain text
+                    "class": "pythonjsonlogger.jsonlogger.JsonFormatter",  # For loggin in json format, which is more useful when handing in the logs to another app
                     "datefmt": "%Y-%m-%dT%H:%M-%S",
-                    "format": "%(asctime)s.%(msecs)03dZ | %(levelname)-8s | %(name)s:%(lineno)d - %(message)s",
+                    "format": "%(asctime)s.%(msecs)03dZ | %(levelname)-8s | [%(correlation_id)s] %(name)s:%(lineno)d - %(message)s",
                 },
             },
             "handlers": {
@@ -26,6 +37,7 @@ def configure_logging() -> None:
                     "class": "rich.logging.RichHandler",  # Better formatter than above
                     "level": "DEBUG",  # No log is filtered out,
                     "formatter": "console",  # Mapping the formatter defined above
+                    "filters": ["correlation_id"],
                 },
                 "rotating_file": {
                     "class": "logging.handlers.RotatingFileHandler",
@@ -35,6 +47,7 @@ def configure_logging() -> None:
                     "maxBytes": 1024 * 1024 * 5,  # 5MB until new file is created
                     "backupCount": 5,  # How many files will be kept
                     "encoding": "utf8",
+                    "filters": ["correlation_id"],
                 },  # Rotating means every time the file gets full, another file is created
             },
             "loggers": {
