@@ -1,7 +1,8 @@
 from datetime import timezone
 import datetime
 import logging
-from fastapi import HTTPException, status
+from fastapi import HTTPException, status, Depends
+from typing import Annotated
 from fastapi.security import OAuth2PasswordBearer
 from jose import jwt, ExpiredSignatureError, JWTError
 from passlib.context import CryptContext
@@ -64,7 +65,9 @@ async def authenticate_user(email: str, password: str):
     return user
 
 
-async def get_current_user(token: str):
+async def get_current_user(
+    token: Annotated[str, Depends(oauth2_scheme)],
+):  # Depends(oauth2_scheme) allows the function to automatically grab the token from the request instead of us having to pass it to the function as a string
     """Checks if the token given by the user is a valid token. If it is, returns the user according to the email stored in the token payload. This function is used to protect the endpoints from unauthenticated users"""
     try:
         payload = jwt.decode(token, key=SECRET_KEY, algorithms=[ALGORITHM])
