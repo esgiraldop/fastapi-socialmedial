@@ -13,6 +13,9 @@ post_table = Table(
     metadata,  # Used by sqlAlchemy to store database metadata
     Column("id", Integer, primary_key=True),
     Column("body", String),
+    Column(
+        "user_id", ForeignKey("users.id"), nullable=False
+    ),  # Links the posts table with the users table
 )
 
 user_table = sqlalchemy.Table(
@@ -31,6 +34,9 @@ comments_table = Table(
     Column(
         "post_id", Integer, ForeignKey("posts.id"), nullable=False
     ),  # Specifying integer for consistency purposes, but here is actually no need to specify it, since metadata already figures that out from the primary key column
+    Column(
+        "user_id", ForeignKey("users.id"), nullable=False
+    ),  # Links the posts table with the users table
 )
 
 

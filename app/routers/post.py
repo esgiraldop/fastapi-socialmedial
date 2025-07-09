@@ -32,12 +32,17 @@ async def root():
 
 
 @router.post("/post", response_model=UserPost, status_code=201)
-async def create_post(post: UserPostIn, _: Annotated[User, Depends(get_current_user)]):
+async def create_post(
+    post: UserPostIn, user: Annotated[User, Depends(get_current_user)]
+):
     # _: User = await get_current_user(
     #     await oauth2_scheme(request)
     # )  # Only authenticated users can access to this endpoint. This line is no longer needed since it was replaced by its dependency injection version with "Depends(get_current_user)" added in the function signature
     logger.info("Creating post")
-    data = post.model_dump()
+    data = {
+        **post.model_dump(),
+        "user_id": user.id,
+    }  # The created post is returned with the user who created it
     query = post_table.insert().values(
         data
     )  # The keys of the dictionary must match the column names
@@ -58,20 +63,24 @@ async def get_all_posts():
 @router.post("/comment", response_model=Comment, status_code=201)
 async def create_comment(
     comment: CommentIn,
-    _: Annotated[
+    user: Annotated[
         User, Depends(get_current_user)
     ],  # Only authenticated users can access to this endpoint
 ):
     # _: User = await get_current_user(
     #     await oauth2_scheme(request)
     # )  # Only authenticated users can access to this endpoint. This line is no longer needed since it was replaced by its dependency injection version with "Depends(get_current_user)" added in the function signature
-    logger.info("Creating a post")
+    logger.info("Creating a comment")
     post = await find_post(comment.post_id)
     if not post:
         # logger.error(f"Post with id {comment.post_id} not found") # replaced with the exception handler "http_exception_handle_logger"
         raise HTTPException(status_code=404, detail="Post not found")
 
-    data = comment.model_dump()
+    data = {
+        "body": comment.body,
+        "post_id": comment.post_id,
+        "user_id": user.id,
+    }  # The created comment is returned with the user who created it
     query = comments_table.insert().values(data)
     last_record_id = await database.execute(query)
     return {**data, "id": last_record_id}

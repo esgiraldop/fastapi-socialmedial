@@ -48,7 +48,9 @@ async def created_comment(
 
 
 @pytest.mark.anyio  # Telling pytest this test should use the async backend configured in the conftest
-async def test_create_post(async_client: AsyncClient, logged_in_token: str):
+async def test_create_post(
+    async_client: AsyncClient, registered_user: dict, logged_in_token: str
+):
     body = "Test Post"
 
     response = await async_client.post(
@@ -59,7 +61,8 @@ async def test_create_post(async_client: AsyncClient, logged_in_token: str):
 
     assert response.status_code == 201
     assert (
-        {"id": 1, "body": body}.items() <= response.json().items()
+        {"id": 1, "body": body, "user_id": registered_user["id"]}.items()
+        <= response.json().items()
     )  # "<=" for assessing the expression at the left is included in the one at the right
 
 
@@ -104,7 +107,7 @@ async def test_get_posts(async_client: AsyncClient, created_post: dict):
 
 @pytest.mark.anyio
 async def test_create_comment(
-    async_client: AsyncClient, created_post, logged_in_token: str
+    async_client: AsyncClient, created_post, registered_user: dict, logged_in_token: str
 ):
     body = "Test comment"
     response = await async_client.post(
@@ -118,6 +121,8 @@ async def test_create_comment(
     assert {
         "body": body,
         "post_id": created_post["id"],
+        "user_id": registered_user["id"],
+        # "id":
     }.items() <= response.json().items()
 
 
